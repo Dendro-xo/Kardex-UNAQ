@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Boleta Calificaciones UNAQ</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kárdex de Calificaciones</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Century Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: url('https://www.unaq.edu.mx/wp-content/uploads/PortadaUNAQ.jpg') center/cover no-repeat;
+            opacity: 0.9;
+            position: relative;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 51, 0.6);
+            z-index: 0;
+        }
+
+        .header-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        header h1 {
+            font-weight: bold;
+            color: white;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Date and Time */
+        .date-time {
+            font-size: 16px;
+            color: white;
+            text-align: right;
+            margin-right: 20px;
+            margin-top: -10px;
+        }
+
+        /* Watermark */
+        .watermark {
+            background: url('https://campusvirtual.unaq.edu.mx/pluginfile.php/1/core_admin/logo/0x200/1729451562/Logo-UNAQ.png') center/contain no-repeat;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+            z-index: -1;
+            width: 60%;
+            height: 60%;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .kardex-section h2 {
+            color: #005f99;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Student Info */
+        .student-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .student-photo {
+            max-width: 150px;
+            border-radius: 10px;
+            border: 3px solid #005f99;
+        }
+
+        .student-table, .grades-table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .student-table th, .student-table td,
+        .grades-table th, .grades-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .student-table th, .grades-table th {
+            background-color: #005f99;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #00264d;
+            color: white;
+        }
+
+        footer img {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+
+        .footer-large-img {
+            max-width: 150px;
+            height: auto;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        // Function to display real-time date and time
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            const time = now.toLocaleTimeString('es-ES', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            document.getElementById('dateTime').textContent = `${date}, ${time}`;
+        }
+
+        // Function to calculate average grade
+        function calculateAverage() {
+            const grades = [9.5, 9, 10, 10, 10, 9.1];
+            const average = grades.reduce((sum, grade) => sum + grade, 0) / grades.length;
+            document.getElementById('averageGrade').textContent = average.toFixed(2);
+        }
+
+        // Initialize
+        setInterval(updateDateTime, 1000);
+        window.onload = calculateAverage;
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Universidad Aeronáutica en Querétaro</h1>
+            <nav>
+                <ul>
+                    <li><a href="https://www.unaq.edu.mx/">Inicio</a></li>
+                    <li><a href="#kardex">Kárdex</a></li>
+                    <li><a href="https://www.unaq.edu.mx/nosotros/directorio/">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="date-time" id="dateTime"></div>
+        </div>
+    </header>
+
+    <div class="watermark"></div>
+
+    <main>
+        <section id="kardex" class="kardex-section">
+            <h2>Kárdex de Calificaciones</h2>
+            <div class="student-info">
+                <img src="https://sac.unaq.edu.mx/uploads/fotos/alumnos/20231/10618.jpg" alt="Foto del Estudiante" class="student-photo">
+                <table class="student-table">
+                    <tr><th>Nombre</th><td>Juan Manuel Rangel González</td></tr>
+                    <tr><th>Matrícula</th><td>10618</td></tr>
+                    <tr><th>Generación</th><td>20231</td></tr>
+                    <tr><th>Promedio General</th><td>8.90</td></tr>
+                    <tr><th>Materias Aprobadas</th><td>20</td></tr>
+                    <tr><th>Estatus Actual</th><td>ACTIVO</td></tr>
+                    <tr><th>NSS</th><td>17170162329</td></tr>
+                </table>
+            </div>
+
+            <h3>Calificaciones</h3>
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Calificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cálculo Integral</td><td>9.5</td></tr>
+                    <tr><td>Inglés</td><td>9</td></tr>
+                    <tr><td>Probabilidad y Estadística</td><td>10</td></tr>
+                    <tr><td>Termodinámica</td><td>10</td></tr>
+                    <tr><td>Herramientas de Calidad</td><td>10</td></tr>
+                    <tr><td>Cinemática</td><td>9.1</td></tr>
+                    <tr><th>Promedio</th><td id="averageGrade"></td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Universidad Aeronáutica en Querétaro. Todos los derechos reservados.</p>
+        <img src="https://yt3.googleusercontent.com/GEu6bYFdAqQ35TcCuSdhdD6PPO5OMhNNoaarK8i8LHe1NU1YN9rtbPJVlMi6mscUzqkXpS8o=s900-c-k-c0x00ffffff-no-rj" alt="Imagen grande de derechos reservados" class="footer-large-img">
+    </footer>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
